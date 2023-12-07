@@ -30,8 +30,8 @@ What is the index of the first term in the Fibonacci sequence to contain 1000 di
 */
 
 int main() {
-    /* std::string str1 = "911";
-    std::string str2 = "265";
+    /* std::string str1 = "265";
+    std::string str2 = "911";
     std::cout << func::add_num_str(str1, str2) << '\n'; */
     /* try {
         for (int i = 1; i <= 12; i++) {

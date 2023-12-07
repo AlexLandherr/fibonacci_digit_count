@@ -18,11 +18,13 @@ namespace func {
         //Adding number strings together, one digit at a time from right to left.
         int carry = 0;
         for (int i = static_cast<int>(str1.length()) - 1; i >= 0; i--) {
-            std::string digit_1 = str1.substr(i, 1);
-            std::string digit_2 = str2.substr(i, 1);
-            result.insert(0, std::to_string((std::stoi(digit_1) + std::stoi(digit_2) + carry) % 10));
+            /* std::string digit_1 = str1.substr(i, 1);
+            std::string digit_2 = str2.substr(i, 1); */
+            //result.insert(0, std::to_string((std::stoi(digit_1) + std::stoi(digit_2) + carry) % 10));
+            result.insert(0, std::to_string(((str1[i] - 48) + (str2[i] - 48) + carry) % 10));
             //std::cout << "i: " << i << " digit_1: " << digit_1 << " digit_2: " << digit_2 << " temp_sum: " << (std::stoi(digit_1) + std::stoi(digit_2) + carry) << " carry: " << carry << '\n';
-            carry = (std::stoi(digit_1) + std::stoi(digit_2) + carry) / 10;
+            //carry = (std::stoi(digit_1) + std::stoi(digit_2) + carry) / 10;
+            carry = ((str1[i] - 48) + (str2[i] - 48) + carry) / 10;
         }
 
         //Prepend the final carry value to the result std::string.
