@@ -42,9 +42,15 @@ int main() {
     } catch (const std::exception& ex) {
         std::cout << ex.what() << '\n';
     } */
-    uint64_t digit_count = 1000;
-    std::cout << "The index (starting from 1) of the first term in the Fibonacci sequence to contain " << digit_count << " digit(s) is:" << '\n';
-    std::cout << func::first_fibo_num_with_n_digits(digit_count) << '\n';
+    try {
+        uint64_t digit_count = 1000;
+        std::cout << "The index (starting from 1) of the first term in the Fibonacci sequence to contain " << digit_count << " digit(s) is:" << '\n';
+        std::cout << func::first_fibo_num_with_n_digits(digit_count) << '\n';
+    } catch (const std::invalid_argument& ex) {
+        std::cout << ex.what() << '\n';
+    } catch (const std::exception& ex) {
+        std::cout << ex.what() << '\n';
+    }
 
     return 0;
 }
