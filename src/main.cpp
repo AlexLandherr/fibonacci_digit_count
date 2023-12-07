@@ -1,5 +1,8 @@
 #include "include/functions.h"
 #include <iostream>
+#include <string>
+#include <stdexcept>
+#include <cstdint>
 
 /*
 The Fibonacci sequence is defined by the recurrence relation:
@@ -27,6 +30,21 @@ What is the index of the first term in the Fibonacci sequence to contain 1000 di
 */
 
 int main() {
+    /* std::string str1 = "911";
+    std::string str2 = "265";
+    std::cout << func::add_num_str(str1, str2) << '\n'; */
+    /* try {
+        for (int i = 1; i <= 12; i++) {
+            std::cout << func::nth_fibonacci_num(i) << '\n';
+        }
+    } catch (const std::invalid_argument& ex) {
+        std::cout << ex.what() << '\n';
+    } catch (const std::exception& ex) {
+        std::cout << ex.what() << '\n';
+    } */
+    uint64_t digit_count = 1000;
+    std::cout << "The index (starting from 1) of the first term in the Fibonacci sequence to contain " << digit_count << " digit(s) is:" << '\n';
+    std::cout << func::first_fibo_num_with_n_digits(digit_count) << '\n';
 
     return 0;
 }

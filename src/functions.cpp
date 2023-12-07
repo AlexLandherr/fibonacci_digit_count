@@ -1,30 +1,9 @@
 #include "include/functions.h"
 #include <string>
-
-/*
-The Fibonacci sequence is defined by the recurrence relation:
-
-F_n = F_n-1 + F_n-2, where F_1 = 1 and F_2 = 1.
-
-Hence the first 12 terms will be:
-
-F_1 = 1
-F_2 = 1
-F_3 = 2
-F_4 = 3
-F_5 = 5
-F_6 = 8
-F_7 = 13
-F_8 = 21
-F_9 = 34
-F_10 = 55
-F_11 = 89
-F_12 = 144
-
-The 12th term, F_12, is the first term to contain 3 digits.
-
-What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
-*/
+#include <vector>
+#include <stdexcept>
+#include <cstdint>
+#include <iostream>
 
 namespace func {
     std::string add_num_str(std::string &str1, std::string &str2) {
@@ -53,5 +32,39 @@ namespace func {
         }
 
         return result;
+    }
+
+    std::string nth_fibonacci_num(int nth_num) {
+        if (nth_num < 1) {
+            throw std::invalid_argument("Argument 'nth_num' is less than 1; must be greater than 1!");
+        } else if (nth_num >= 1 && nth_num <= 2) {
+            return "1";
+        } else {
+            std::vector<std::string> all_fibo = {"1", "1"};
+            int loop_count = 2;
+
+            while (loop_count < nth_num) {
+                std::string F_n = add_num_str(all_fibo[loop_count - 1], all_fibo[loop_count - 2]);
+                all_fibo.push_back(F_n);
+                loop_count++;
+            }
+
+            return all_fibo.back();
+        }
+    }
+
+    uint64_t first_fibo_num_with_n_digits(uint64_t n) {
+        uint64_t counter = 1;
+        while (true) {
+            //std::string temp_result = nth_fibonacci_num(counter);
+            uint64_t str_length = static_cast<uint64_t>(nth_fibonacci_num(counter).length());
+            if (str_length == n) {
+                break;
+            }
+            std::cout << "counter: " << counter << " length: " << str_length << '\n';
+            counter++;
+        }
+
+        return counter;
     }
 }
